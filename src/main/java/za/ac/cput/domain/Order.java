@@ -75,7 +75,7 @@ public class Order {
             return this;
         }
 
-        public za.ac.cput.domain.Order build() {
+        public Order build() {
             if (Helper.isNullOrEmpty(orderId))
                 throw new IllegalArgumentException("orderId is required");
             if (Helper.isNullOrEmpty(orderDate))
