@@ -10,7 +10,7 @@ package za.ac.cput.domain;
 import za.ac.cput.util.Helper;
 
 public class OrderItem {
-    private final Builder itemId;
+    private final String itemId;
     private final double unitPrice;
     private final int quantity;
     private final double subtotal;
@@ -20,7 +20,7 @@ public class OrderItem {
         this.itemId = builder.itemId;
         this.quantity = builder.quantity;
         this.unitPrice = builder.unitPrice;
-        this.subtotal = builder.subtotal();
+        this.subtotal = builder.build().subtotal;
 
     }
 
@@ -42,39 +42,41 @@ public class OrderItem {
 
 
     @Override
-    public  String toString() {
-        return  "OrderItem{" +  " itemId =" + itemId + "\" " + ", quantity" +  quantity  + " , unitPrice =" + unitPrice + ", subtotal = " + subtotal + "}";
+    public String toString() {
+        return "OrderItem{" + " itemId =" + itemId + "\" " + ", quantity" + quantity + " , unitPrice =" + unitPrice + ", subtotal = " + subtotal + "}";
     }
 
+
+    public static class Builder {
+        private String itemId;
+        private int quantity;
+        private double unitPrice;
+
+        public Builder setItemId(String itemId) {
+            this.itemId = itemId;
+            return this;
+        }
+
+        public Builder setQuantity(int quantity) {
+            this.quantity = quantity;
+            return this;
+        }
+
+        public Builder setUnitPrice(double unitPrice) {
+            this.unitPrice = unitPrice;
+            return this;
+        }
+
+        public OrderItem build() {
+            if (Helper.isNullOrEmpty(itemId))
+                throw new IllegalArgumentException("Item ID is required");
+            if (Helper.isNullOrEmpty(quantity))
+                throw new IllegalArgumentException("Excedded !!");
+            if (Helper.isNullOrEmpty(unitPrice))
+                throw new IllegalArgumentException("Invalid price!!!");
+
+            return new OrderItem(this);
+        }
+
+    }
 }
- public static class  Builder {
-     private String itemId;
-     private int quantity;
-     private double unitPrice;
-
-     public Builder setItemId(String itemId) {
-         this.itemId = itemId;
-         return this;
-     }
-
-     public Builder setQuantity(int quantity) {
-         this.quantity = quantity;
-         return this;
-     }
-
-     public Builder setUnitPrice(double unitPrice) {
-         this.unitPrice = unitPrice;
-         return this;
-     }
-
-     public OrderItem build() {
-         if (Helper.isNullOrEmpty(itemId))
-             throw new IllegalArgumentException("Item ID is required");
-         if (Helper.isNullOrEmpty(quantity))
-             throw new IllegalArgumentException("Excedded !!");
-         if (Helper.isNullOrEmpty( unitPrice))
-             throw new IllegalArgumentException("Invalid price!!!");
-
-         return new OrderItem(this);
-     }
- }
