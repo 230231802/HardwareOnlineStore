@@ -68,6 +68,7 @@ public class OrderItem {
         }
 
         public OrderItem build() {
+
             if (Helper.isNullOrEmpty(itemId))
                 throw new IllegalArgumentException("Item ID is required");
             if (Helper.isNullOrEmpty(quantity))
