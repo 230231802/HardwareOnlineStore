@@ -1,8 +1,7 @@
 package za.ac.cput.service;
 
-import za.ac.cput.domain.Category;
+import za.ac.cput.entity.Category;
 
-import java.util.List;
 import java.util.Set;
 /* ICategoryService.java
    Category Service Interface
@@ -11,6 +10,8 @@ import java.util.Set;
 
 public interface ICategoryService extends IService<Category, String> {
 
-    List<Category> getAll();
+    boolean delete(String categoryId);
+
+    Set<Category> getAll();
 
 }

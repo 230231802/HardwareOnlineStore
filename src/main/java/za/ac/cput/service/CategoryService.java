@@ -1,9 +1,8 @@
 package za.ac.cput.service;
 
-import za.ac.cput.domain.Category;
-import za.ac.cput.repository.CategoryRepository;
+import za.ac.cput.entity.Category;
 
-import java.util.Set;
+import java.util.List;
 /* CategoryService.java
    Category Service Implementation using Singleton Pattern
    Author: Sinoxolo Kobeni (230801846)
@@ -46,7 +45,7 @@ public class CategoryService implements ICategoryService {
     }
 
     @Override
-    public Set<Category> getAll() {
+    public List<Category> getAll() {
         return repository.getAll();
     }
 }

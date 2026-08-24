@@ -1,7 +1,7 @@
 package za.ac.cput.factory;
 
 import org.junit.jupiter.api.Test;
-import za.ac.cput.domain.Category;
+import za.ac.cput.entity.Category;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,6 +18,7 @@ class CategoryFactoryTest {
         Category category = CategoryFactory.createCategory(
                 "C001",
                 "Tools",
+
                 null
         );
 
